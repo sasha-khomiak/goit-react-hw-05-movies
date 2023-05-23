@@ -24,31 +24,19 @@ const Home = () => {
       <ol>
         {trendingFilms.map(film => {
           // якщо назва фільму в параметрі film.title
-          if (film.title) {
-            return (
-              <li key={film.id}>
-                <img
-                  src={`https://image.tmdb.org/t/p/w500${film.poster_path}`}
-                  width={`100`}
-                  alt="preview"
-                />
-                <p>{film.title}</p>
-              </li>
-            );
-          }
-          // якщо назва фільму в параметрі film.name
-          if (film.name) {
-            return (
-              <li key={film.id}>
-                <img
-                  src={`https://image.tmdb.org/t/p/w500${film.poster_path}`}
-                  width={`100`}
-                  alt="preview"
-                />
-                <p>{film.name}</p>
-              </li>
-            );
-          }
+          return (
+            <li key={film.id}>
+              <img
+                src={`https://image.tmdb.org/t/p/w500${film.poster_path}`}
+                width={`100`}
+                alt="preview"
+              />
+              {/* якщо назва фільму в параметрі film.title */}
+              {film.title && <p>{film.title}</p>}
+              {/* якщо назва фільму в параметрі film.name */}
+              {film.name && <p>{film.name}</p>}
+            </li>
+          );
         })}
       </ol>
     </div>
