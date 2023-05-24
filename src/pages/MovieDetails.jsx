@@ -1,29 +1,47 @@
+// підключення React і хуків
 import React from 'react';
-// import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
+
+// підключення useParams для отримання параметрів з адресного рядка
 import { useParams } from 'react-router-dom';
 
-const MovieDetails = props => {
+// підключення функції отримання даних про фільм із api
+import { getMovieById } from '../utils/api';
+
+// підключення бібліотеки повідомлень
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+// підключення компонентів
+import Loader from '../components/Loader/Loader';
+
+const MovieDetails = () => {
   const { movieId } = useParams();
   const [filmInfo, setFilmInfo] = useState({});
+  const [error, setError] = useState(null);
+  const [showLoader, setShowLoader] = useState(false);
 
+  // перше і єдине завантаження
   useEffect(() => {
-    const API_KEY = 'f051ac50d3bfe0c3fd75f02c1ff7b688';
-    const BASE_URL = 'https://api.themoviedb.org/';
-    const URL = `${BASE_URL}3/movie/${movieId}?api_key=${API_KEY}`;
-
-    fetch(URL)
-      .then(res => res.json())
+    setShowLoader(true);
+    getMovieById(movieId)
       .then(data => {
-        console.log('data', data);
         setFilmInfo(data);
-        // console.log(filmInfo);
       })
-      .catch();
+      .catch(e => {
+        setError(e.message);
+        toast.error(e.message);
+      })
+      .finally(() => {
+        setShowLoader(false);
+      });
   }, [movieId]);
   console.log('filmInfo', filmInfo.poster_path);
+
   return (
     <>
+      {showLoader && <Loader />}
+      {error && <ToastContainer />}
       <img
         src={`https://image.tmdb.org/t/p/w500${filmInfo.poster_path}`}
         width={`100`}
@@ -41,7 +59,5 @@ const MovieDetails = props => {
     </>
   );
 };
-
-// MovieDetails.propTypes = {};
 
 export default MovieDetails;

@@ -1,39 +1,53 @@
+// підключення React і хуків useState, useEffect
 import React, { useState, useEffect } from 'react';
 // import { NavLink } from 'react-router-dom';
-// import PropTypes from 'prop-types'
 
+// підключення бібліотеки повідомлень
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+// підключення компонентів
 import Loader from '../components/Loader/Loader';
 import ListOfFilms from '../components/ListOfFilms/ListOfFilms';
 
+// підключення функції отримання трендових фільмів із api
+import { getTrendiingMovies } from '../utils/api';
+
 const Home = () => {
+  // стейти
   const [trendingFilms, setTrendingFilms] = useState([]);
   const [showLoader, setShowLoader] = useState(false);
+  const [error, setError] = useState(null);
 
+  // перше і єдине завантаження
   useEffect(() => {
-    const API_KEY = 'f051ac50d3bfe0c3fd75f02c1ff7b688';
-    const BASE_URL = 'https://api.themoviedb.org/';
-    const URL = `${BASE_URL}3/trending/all/day?api_key=${API_KEY}`;
+    // вмикаємо лоадер
     setShowLoader(true);
-    fetch(URL)
-      .then(response => response.json())
+
+    //отримуємо фільми, записуємо в стейт, ловимо помилки, на фінал знімаємо лоадер
+    getTrendiingMovies()
       .then(data => {
-        // console.log(data);
         setTrendingFilms(data.results);
+      })
+      .catch(e => {
+        setError(e.message);
+        toast.error(e.message);
+      })
+      .finally(() => {
         setShowLoader(false);
       });
   }, []);
 
-  // Верстка
+  // Верстка сторінки
   return (
     <div>
       {showLoader && <Loader />}
+      {error && <ToastContainer />}
 
       <h1>Trending today</h1>
       <ListOfFilms trendingFilms={trendingFilms} />
     </div>
   );
 };
-
-// Home.propTypes = {}
 
 export default Home;
