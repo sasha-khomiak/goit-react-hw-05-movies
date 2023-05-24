@@ -20,7 +20,7 @@ const MovieDetails = props => {
         // console.log(filmInfo);
       })
       .catch();
-  }, []);
+  }, [movieId]);
   console.log('filmInfo', filmInfo.poster_path);
   return (
     <>

@@ -2,7 +2,7 @@ import React from 'react';
 // import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom';
 
-import { Ul } from './ListOfFilms.styled';
+import { Ul, Li } from './ListOfFilms.styled';
 
 const ListOfFilms = ({ trendingFilms }) => {
   return (
@@ -10,7 +10,7 @@ const ListOfFilms = ({ trendingFilms }) => {
       {trendingFilms.map(film => {
         // якщо назва фільму в параметрі film.title
         return (
-          <li key={film.id}>
+          <Li key={film.id}>
             <img
               src={`https://image.tmdb.org/t/p/w500${film.poster_path}`}
               width={`150`}
@@ -24,7 +24,7 @@ const ListOfFilms = ({ trendingFilms }) => {
             {film.name && (
               <NavLink to={`/movies/${film.id}`}>{film.name}</NavLink>
             )}
-          </li>
+          </Li>
         );
       })}
     </Ul>
