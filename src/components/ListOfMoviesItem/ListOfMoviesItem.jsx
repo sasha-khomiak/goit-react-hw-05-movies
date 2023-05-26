@@ -1,18 +1,20 @@
 import { Li, Thumb, Img, StyledNavLink } from './ListOfMoviesItem.styled';
 
-// import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const ListOfMoviesItem = ({ movie }) => {
   // якщо назва фільму в параметрі film.title
   return (
     <Li>
-      <Thumb>
-        <Img
-          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-          width={`100%`}
-          alt="preview"
-        />
-      </Thumb>
+      <Link to={`/movies/${movie.id}`}>
+        <Thumb>
+          <Img
+            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            width={`100%`}
+            alt="preview"
+          />
+        </Thumb>
+      </Link>
 
       {/* якщо назва фільму в параметрі film.title */}
       {movie.title && (

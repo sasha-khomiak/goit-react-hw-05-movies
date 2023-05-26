@@ -7,6 +7,9 @@ export const Container = styled.div`
   /* outline: 2px solid tomato; */
   padding: 0 15px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding-top: 15px;
 
   /*----Базовий стиль для мобілки 480-767 (адаптивний)----*/
   @media screen and (min-width: 480px) {

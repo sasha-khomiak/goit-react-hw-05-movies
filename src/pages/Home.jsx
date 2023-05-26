@@ -37,6 +37,7 @@ const Home = () => {
       .catch(e => {
         setError(e.message);
         toast.error(e.message);
+        console.log('error', error);
       })
       .finally(() => {
         setShowLoader(false);
@@ -47,7 +48,7 @@ const Home = () => {
   return (
     <>
       {showLoader && <Loader />}
-      {error && <ToastContainer />}
+      <ToastContainer />
       <section>
         <Container>
           <Title text="Trending today" />

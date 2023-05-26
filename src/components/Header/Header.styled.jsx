@@ -78,6 +78,7 @@ export const StyledNavLink = styled(NavLink)`
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 250ms linear;
 
   &:hover {
     transform: scale(1.1);

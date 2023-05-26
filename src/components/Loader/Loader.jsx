@@ -13,9 +13,9 @@ const Loader = () => {
   return createPortal(
     <LoaderContainer>
       <CirclesWithBar
-        height="300"
+        height="150"
         width="300"
-        color="#4fa94d"
+        color="#ff6b17"
         wrapperStyle={{}}
         wrapperClass=""
         visible={true}
