@@ -13,6 +13,8 @@ import ListOfMovies from '../components/ListOfMovies/ListOfMovies';
 // підключення стилю контейнера
 import { Container } from 'components/App.styled';
 
+import Title from '../components/Title/Title';
+
 // підключення функції отримання трендових фільмів із api
 import { getTrendiingMovies } from '../utils/api';
 
@@ -48,7 +50,7 @@ const Home = () => {
       {error && <ToastContainer />}
       <section>
         <Container>
-          <h1>Trending today</h1>
+          <Title text="Trending today" />
           <ListOfMovies trendingMovies={trendingMovies} />
         </Container>
       </section>
