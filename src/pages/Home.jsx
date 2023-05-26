@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 // import { NavLink } from 'react-router-dom';
 
 // підключення бібліотеки повідомлень
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 
 // підключення компонентів
 import Loader from '../components/Loader/Loader';
@@ -22,7 +22,7 @@ const Home = () => {
   // стейти
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [showLoader, setShowLoader] = useState(false);
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
 
   // перше і єдине завантаження
   useEffect(() => {
@@ -34,11 +34,11 @@ const Home = () => {
       .then(data => {
         setTrendingMovies(data.results);
       })
-      .catch(e => {
-        setError(e.message);
-        toast.error(e.message);
-        console.log('error', error);
-      })
+      // .catch(e => {
+      // setError(e.message);
+      // toast.error(e.message);
+      // console.log('error', error);
+      // })
       .finally(() => {
         setShowLoader(false);
       });
@@ -48,7 +48,7 @@ const Home = () => {
   return (
     <>
       {showLoader && <Loader />}
-      <ToastContainer />
+      {/* <ToastContainer /> */}
       <section>
         <Container>
           <Title text="Trending today" />
