@@ -8,14 +8,17 @@ import 'react-toastify/dist/ReactToastify.css';
 
 // підключення компонентів
 import Loader from '../components/Loader/Loader';
-import ListOfFilms from '../components/ListOfFilms/ListOfFilms';
+import ListOfMovies from '../components/ListOfMovies/ListOfMovies';
+
+// підключення стилю контейнера
+import { Container } from 'components/App.styled';
 
 // підключення функції отримання трендових фільмів із api
 import { getTrendiingMovies } from '../utils/api';
 
 const Home = () => {
   // стейти
-  const [trendingFilms, setTrendingFilms] = useState([]);
+  const [trendingMovies, setTrendingMovies] = useState([]);
   const [showLoader, setShowLoader] = useState(false);
   const [error, setError] = useState(null);
 
@@ -27,7 +30,7 @@ const Home = () => {
     //отримуємо фільми, записуємо в стейт, ловимо помилки, на фінал знімаємо лоадер
     getTrendiingMovies()
       .then(data => {
-        setTrendingFilms(data.results);
+        setTrendingMovies(data.results);
       })
       .catch(e => {
         setError(e.message);
@@ -40,13 +43,16 @@ const Home = () => {
 
   // Верстка сторінки
   return (
-    <div>
+    <>
       {showLoader && <Loader />}
       {error && <ToastContainer />}
-
-      <h1>Trending today</h1>
-      <ListOfFilms trendingFilms={trendingFilms} />
-    </div>
+      <section>
+        <Container>
+          <h1>Trending today</h1>
+          <ListOfMovies trendingMovies={trendingMovies} />
+        </Container>
+      </section>
+    </>
   );
 };
 
