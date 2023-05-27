@@ -71,7 +71,10 @@ export const Img = styled.img`
 
 export const StyledNavLink = styled(NavLink)`
   display: flex;
-  height: 100%;
+  height: 100% !important;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
 
   height: auto;
   text-decoration: none;

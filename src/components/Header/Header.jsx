@@ -21,7 +21,7 @@ const Header = () => {
         <LogoImg src={Logo} alt="logo" />
         <Nav>
           <StyledNavLink to="/">Home</StyledNavLink>
-          <StyledNavLink to="/">Movies</StyledNavLink>
+          <StyledNavLink to="/movies">Movies</StyledNavLink>
         </Nav>
       </HeaderContainer>
     </StyledHeader>
