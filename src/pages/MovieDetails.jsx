@@ -3,7 +3,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 
 // підключення useParams для отримання параметрів з адресного рядка
-import { useParams } from 'react-router-dom';
+import { useParams, Outlet } from 'react-router-dom';
 
 // підключення функції отримання даних про фільм із api
 import { getMovieById } from '../utils/api';
@@ -47,6 +47,7 @@ const MovieDetails = () => {
       <section>
         <Container>
           {movieInfo && <MovieCard movieInfo={movieInfo} />}
+          <Outlet />
         </Container>
       </section>
     </>

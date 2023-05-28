@@ -2,7 +2,7 @@ import { Li, Thumb, Img, StyledNavLink } from './ListOfMoviesItem.styled';
 
 import { Link } from 'react-router-dom';
 
-import NoPosterImage from '../../images/Untitled-1.jpg';
+import NoPosterImage from '../../images/noPoster.jpg';
 
 const ListOfMoviesItem = ({ movie }) => {
   let posterPath = NoPosterImage;

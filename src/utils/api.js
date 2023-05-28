@@ -35,3 +35,17 @@ export const getMoviesByNameAndPage = (toFind, page) => {
   const URL = `${BASE_URL}3/search/movie?query=${toFind}&include_adult=false&language=en-US&page=${page}&api_key=${API_KEY}`;
   return fetch(URL).then(response => response.json());
 };
+
+// 4 отримання акторів fetch-then по id фільма
+export const getMovieCastById = movieId => {
+  //повний URL запиту
+  const URL = `${BASE_URL}3/movie/${movieId}/credits?language=en-US&api_key=${API_KEY}`;
+  return fetch(URL).then(response => response.json());
+};
+
+// 5 отримання review fetch-then по id фільма
+export const getMovieReviewById = movieId => {
+  //повний URL запиту
+  const URL = `${BASE_URL}3/movie/${movieId}/reviews?language=en-US&api_key=${API_KEY}&page=1`;
+  return fetch(URL).then(response => response.json());
+};
