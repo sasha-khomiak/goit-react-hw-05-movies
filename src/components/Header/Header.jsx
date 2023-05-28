@@ -1,4 +1,4 @@
-// import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Logo from '../../images/logo.png';
 
 //стилі секції <header>
@@ -18,7 +18,10 @@ const Header = () => {
   return (
     <StyledHeader>
       <HeaderContainer>
-        <LogoImg src={Logo} alt="logo" />
+        <Link to="/">
+          <LogoImg src={Logo} alt="logo" />
+        </Link>
+
         <Nav>
           <StyledNavLink to="/">Home</StyledNavLink>
           <StyledNavLink to="/movies">Movies</StyledNavLink>

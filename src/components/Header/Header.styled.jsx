@@ -88,6 +88,6 @@ export const StyledNavLink = styled(NavLink)`
   }
 
   &.active {
-    color: blue;
+    font-weight: 900;
   }
 `;

@@ -63,7 +63,7 @@ const Movies = () => {
     //запит на сервер
     getMoviesByNameAndPage(toFind, page)
       .then(data => {
-        console.log('data', data);
+        // console.log('data', data);
         // якщо немає жодного збігу, то виводимо про це повідомлення
         // і скидаємо стейт до початкового стану (query, page, showBtnLoadMore), щоб не засмічувався
         if (data.total_results < 1) {

@@ -1,19 +1,22 @@
 import React from 'react';
 // import PropTypes from 'prop-types'
 
+import { Ul, Li, Reviever } from './ReviewsList.styled';
+
 const ReviewsList = ({ reviewes }) => {
-  console.log('reviewes', reviewes);
+  //   console.log('reviewes', reviewes);
   return (
-    <ul>
+    <Ul>
       {reviewes.map(review => {
+        // console.log('review', review);
         return (
-          <li>
-            <p>{review.author}</p>
+          <Li key={review.id}>
+            <Reviever>Reviewer: {review.author}</Reviever>
             <p>{review.content}</p>
-          </li>
+          </Li>
         );
       })}
-    </ul>
+    </Ul>
   );
 };
 
