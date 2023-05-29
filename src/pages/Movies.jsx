@@ -1,5 +1,7 @@
 // імпортуємо useState
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+import { useSearchParams } from 'react-router-dom';
 
 // підключення бібліотеки повідомлень
 import { ToastContainer, toast } from 'react-toastify';
@@ -33,10 +35,35 @@ const Movies = () => {
   const [showBtnLoadMore, setShowBtnLoadMore] = useState(false);
   const [showLoader, setShowLoader] = useState(false);
 
+  const [searchParams, setSearchParams] = useSearchParams();
+  const movieName = searchParams.get('query');
+
+  // перша верстка використовуючи запис з адресного рядка
+  useEffect(() => {
+    // якщо параметрів немає, то просто виходимо
+    if (!movieName) {
+      return;
+    }
+    setQuery(movieName);
+    setShowLoader(true);
+    getMoviesByNameAndPage(movieName, 1)
+      .then(data => {
+        setMoviesArray([...data.results]);
+        const alreadyDownloaded = 20 * page;
+        if (alreadyDownloaded < data.total_results) {
+          setShowBtnLoadMore(true);
+        }
+      })
+      .finally(() => {
+        setShowLoader(false);
+      });
+  }, [movieName]);
+
   // що робити з отриманими даними при натиску кнопки SUBMIT у формі
   // викликати ф-ію, яка стирає moviesArray на пустий і скидає page на 1
   // записує значення пошукового запиту в поле query
   // викликає функцію запиту на сервер за комбінацією запиту і першою сторінкою
+  // записуємо в адресний рядок параметр query, зі значенням toFind яке шукаємо
   const onSubmitSearchBtn = toFind => {
     if (toFind === query) {
       toast(`Ви повторно намагаєтесь знайти відео про: "${toFind}"!`);
@@ -46,6 +73,7 @@ const Movies = () => {
     setPage(1);
     setQuery(toFind);
     getFromAPI(toFind, 1);
+    setSearchParams({ query: toFind });
   };
 
   // при натиску кнопки LOAD_MORE
@@ -130,7 +158,10 @@ const Movies = () => {
         <Container>
           <Title text="Search movies" />
           <Searchbar onSubmit={onSubmitSearchBtn} />
-          <ListOfMovies trendingMovies={moviesArray} />
+          {moviesArray.length !== 0 && (
+            <ListOfMovies trendingMovies={moviesArray} />
+          )}
+
           {showBtnLoadMore && (
             <LoadMoreButton loadMoreMovies={loadMoreMovies} />
           )}
