@@ -57,6 +57,7 @@ const Movies = () => {
       .finally(() => {
         setShowLoader(false);
       });
+    // eslint-disable-next-line
   }, []);
 
   // що робити з отриманими даними при натиску кнопки SUBMIT у формі
