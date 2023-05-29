@@ -10,6 +10,7 @@ import Movies from 'pages/Movies';
 import MovieDetails from 'pages/MovieDetails';
 import Cast from './Cast/Cast';
 import Reviews from './Reviews/Reviews';
+import PageNotFound from '../PageNotFound/PageNotFound';
 
 // головний компонент з посторінковою маршрутизацією
 // всі рути прописуємо всережині компонента Routes
@@ -22,6 +23,7 @@ export const App = () => {
     <>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
+          <Route path="*" element={<PageNotFound />}></Route>
           <Route index element={<Home />} />
           <Route path="movies" element={<Movies />} />
           <Route path="movies/:movieId" element={<MovieDetails />}>

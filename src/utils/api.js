@@ -2,10 +2,17 @@
 const API_KEY = 'f051ac50d3bfe0c3fd75f02c1ff7b688';
 const BASE_URL = 'https://api.themoviedb.org/';
 
-// 1 отримання трендових фільмів fetch-then
+// // 1 отримання трендових фільмів fetch-then
+// export const getTrendiingMovies = () => {
+//   //повний URL запиту
+//   const URL = `${BASE_URL}3/trending/all/week?api_key=${API_KEY}`;
+//   return fetch(URL).then(response => response.json());
+// };
+
+// 1-1 отримання популярних фільмів fetch-then (без косяків апішки)
 export const getTrendiingMovies = () => {
   //повний URL запиту
-  const URL = `${BASE_URL}3/trending/all/week?api_key=${API_KEY}`;
+  const URL = `${BASE_URL}3/movie/popular?api_key=${API_KEY}&page=1`;
   return fetch(URL).then(response => response.json());
 };
 

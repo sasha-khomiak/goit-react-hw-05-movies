@@ -14,11 +14,18 @@ const Cast = () => {
   useEffect(() => {
     getMovieCastById(movieId).then(data => {
       //   console.log('data', data);
+      if (data.cast.length === 0) {
+        return;
+      }
       setCast(data.cast);
     });
   }, [movieId]);
-
-  return cast && <CastList cast={cast} />;
+  return (
+    <>
+      {cast && <CastList cast={cast} />}
+      {!cast && <p>There is no casts</p>}
+    </>
+  );
 };
 
 // Cast.propTypes = {};

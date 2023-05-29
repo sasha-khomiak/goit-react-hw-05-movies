@@ -11,8 +11,6 @@ import {
 import NoPosterImage from '../../images/noPoster.jpg';
 
 const MovieCard = ({ movieInfo }) => {
-  // console.log('movieInfo', movieInfo);
-
   const { vote_average } = movieInfo;
   const score = Math.round(vote_average * 10);
 
