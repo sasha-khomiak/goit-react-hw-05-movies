@@ -30,23 +30,23 @@ const Movies = () => {
   // showBtnLoadMore - чи показувати кнопку завантажити ще
   // isLoading - чи показувати лоадер
   const [moviesArray, setMoviesArray] = useState([]);
-  const [query, setQuery] = useState('');
+  // const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
   const [showBtnLoadMore, setShowBtnLoadMore] = useState(false);
   const [showLoader, setShowLoader] = useState(false);
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const movieName = searchParams.get('query');
+  const query = searchParams.get('query');
 
   // перша верстка використовуючи запис з адресного рядка
   useEffect(() => {
     // якщо параметрів немає, то просто виходимо
-    if (!movieName) {
+    if (!query) {
       return;
     }
-    setQuery(movieName);
+
     setShowLoader(true);
-    getMoviesByNameAndPage(movieName, 1)
+    getMoviesByNameAndPage(query, 1)
       .then(data => {
         setMoviesArray([...data.results]);
         const alreadyDownloaded = 20 * 1;
@@ -57,7 +57,7 @@ const Movies = () => {
       .finally(() => {
         setShowLoader(false);
       });
-  }, [movieName]);
+  }, []);
 
   // що робити з отриманими даними при натиску кнопки SUBMIT у формі
   // викликати ф-ію, яка стирає moviesArray на пустий і скидає page на 1
@@ -71,7 +71,6 @@ const Movies = () => {
     }
     setMoviesArray([]);
     setPage(1);
-    setQuery(toFind);
     getFromAPI(toFind, 1);
     setSearchParams({ query: toFind });
   };
@@ -97,7 +96,7 @@ const Movies = () => {
         if (data.total_results < 1) {
           toast.error(`За запитом "${toFind}" результатів нема!`);
           setPage(1);
-          setQuery('');
+          setSearchParams({});
           setShowBtnLoadMore(false);
         }
         //Якщо у нас є результати для показу, то треба
