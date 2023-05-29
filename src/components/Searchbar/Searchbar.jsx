@@ -2,6 +2,10 @@
 // import PropTypes from 'prop-types'
 import { useState } from 'react';
 
+import { Form, SearchBtn, BtnIcon, Input } from './Searchbar.styled';
+
+import SearchImg from '../../images/search-loop.svg';
+
 const Searchbar = ({ onSubmit }) => {
   // стейт для контролю інпута
   const [query, setQuery] = useState('');
@@ -24,20 +28,21 @@ const Searchbar = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={onSubmitForm}>
-      <button type="submit">
-        <span>Search movie</span>
-      </button>
+    <Form onSubmit={onSubmitForm}>
+      <SearchBtn type="submit">
+        <BtnIcon src={SearchImg} />
+        <span role="img" aria-label="search movie"></span>
+      </SearchBtn>
 
-      <input
+      <Input
         type="text"
         autoComplete="off"
         autoFocus
-        placeholder="Search movies"
+        placeholder="Search movies..."
         value={query}
         onChange={handleChangeInput}
       />
-    </form>
+    </Form>
   );
 };
 

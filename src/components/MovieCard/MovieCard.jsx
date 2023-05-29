@@ -26,7 +26,7 @@ const MovieCard = ({ movieInfo }) => {
   return (
     <MovieCardWrap>
       <div>
-        <StyledNavLink to="">Back </StyledNavLink>
+        <StyledNavLink to="/">Back </StyledNavLink>
       </div>
       <div>
         <div>
