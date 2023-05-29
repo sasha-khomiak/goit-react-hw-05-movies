@@ -49,7 +49,7 @@ const Movies = () => {
     getMoviesByNameAndPage(movieName, 1)
       .then(data => {
         setMoviesArray([...data.results]);
-        const alreadyDownloaded = 20 * page;
+        const alreadyDownloaded = 20 * 1;
         if (alreadyDownloaded < data.total_results) {
           setShowBtnLoadMore(true);
         }
