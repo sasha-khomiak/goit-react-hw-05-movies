@@ -20,6 +20,8 @@ import LoadMoreButton from '../components/LoadMoreButton/LoadMoreButton';
 // підключення стилізованих компонентів
 import { Container } from '../components/App.styled';
 
+import SearchingImage from '../images/searching.gif';
+
 // наш головний компонент
 const Movies = () => {
   //наш стейт
@@ -46,6 +48,7 @@ const Movies = () => {
     }
 
     setShowLoader(true);
+
     getMoviesByNameAndPage(query, 1)
       .then(data => {
         setMoviesArray([...data.results]);
@@ -158,10 +161,13 @@ const Movies = () => {
         <Container>
           <Title text="Search movies" />
           <Searchbar onSubmit={onSubmitSearchBtn} />
+
+          {moviesArray.length === 0 && (
+            <img src={SearchingImage} alt="searching" />
+          )}
           {moviesArray.length !== 0 && (
             <ListOfMovies trendingMovies={moviesArray} />
           )}
-
           {showBtnLoadMore && (
             <LoadMoreButton loadMoreMovies={loadMoreMovies} />
           )}

@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 //iмпорт компонента Header
 import Header from '../Header/Header';
-
+import Footer from '../Footer/Footer';
 const SharedLayout = () => {
   return (
     <>
@@ -14,11 +14,7 @@ const SharedLayout = () => {
           <Outlet />
         </Suspense>
       </main>
-      {/* <footer>
-        <Container>
-          <p>cppy</p>
-        </Container>
-      </footer> */}
+      <Footer />
     </>
   );
 };

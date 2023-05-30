@@ -10,6 +10,7 @@ export const Form = styled.form`
   /* justify-content: center; */
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 20px;
 `;
 
 export const SearchBtn = styled.button`

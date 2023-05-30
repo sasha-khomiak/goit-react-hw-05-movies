@@ -1,10 +1,12 @@
 import { useLocation } from 'react-router-dom';
 import {
   MovieCardWrap,
+  MovieBlock,
   Img,
   MovieTitle,
   Title,
   StyledNavLink,
+  StyledNavLinkBack,
   Extra,
 } from './MovieCard.styled';
 
@@ -28,22 +30,24 @@ const MovieCard = ({ movieInfo }) => {
 
   return (
     <MovieCardWrap>
-      <div>
-        <StyledNavLink to={backLinkLocationRef.current}>Back </StyledNavLink>
-      </div>
-      <div>
-        <Img src={posterPath} alt="preview" />
-      </div>
-      <div>
-        <MovieTitle>{movieInfo.title}</MovieTitle>
-        <p>User score: {score} </p>
-      </div>
-      <div>
-        <Title>Overview </Title>
-        <div>{movieInfo.overview}</div>
-        <Title>Genres </Title>
-        <p>{genres} </p>
-      </div>
+      <StyledNavLinkBack to={backLinkLocationRef.current}>
+        Back
+      </StyledNavLinkBack>
+
+      <MovieBlock>
+        <div>
+          <Img src={posterPath} alt="preview" />
+        </div>
+        <div>
+          <MovieTitle>{movieInfo.title}</MovieTitle>
+          <p>User score: {score} </p>
+
+          <Title>Overview </Title>
+          <div>{movieInfo.overview}</div>
+          <Title>Genres </Title>
+          <p>{genres} </p>
+        </div>
+      </MovieBlock>
       <Extra>
         <StyledNavLink to="cast">Cast</StyledNavLink>
         <StyledNavLink to="reviews">Reviews</StyledNavLink>

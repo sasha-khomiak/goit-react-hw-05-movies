@@ -7,6 +7,8 @@ import { getMovieCastById } from '../../utils/api';
 
 import CastList from '../CastList/CastList';
 
+import { NoCast, NoCastText } from './Cast.styled';
+
 const Cast = () => {
   const [cast, setCast] = useState(null);
   const { movieId } = useParams();
@@ -23,7 +25,11 @@ const Cast = () => {
   return (
     <>
       {cast && <CastList cast={cast} />}
-      {!cast && <p>There is no casts</p>}
+      {!cast && (
+        <NoCast>
+          <NoCastText>There is no casts</NoCastText>
+        </NoCast>
+      )}
     </>
   );
 };

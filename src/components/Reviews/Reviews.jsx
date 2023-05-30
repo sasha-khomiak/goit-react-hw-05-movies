@@ -5,6 +5,8 @@ import { getMovieReviewById } from '../../utils/api';
 
 import ReviewsList from '../ReviewsList/ReviewsList';
 
+import { NoRevievews, NoRevievewsText } from './Reviews.styled';
+
 const Reviews = () => {
   const [reviewes, setReviewes] = useState(null);
   const { movieId } = useParams();
@@ -22,7 +24,11 @@ const Reviews = () => {
   return (
     <>
       {reviewes && <ReviewsList reviewes={reviewes} />}
-      {!reviewes && <p>There is no reviews!</p>}
+      {!reviewes && (
+        <NoRevievews>
+          <NoRevievewsText>There is no reviews!</NoRevievewsText>
+        </NoRevievews>
+      )}
     </>
   );
 };
