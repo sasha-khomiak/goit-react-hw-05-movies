@@ -24,6 +24,10 @@ const MovieDetails = () => {
   // const [error, setError] = useState(null);
   const [showLoader, setShowLoader] = useState(false);
 
+  // const location = useLocation();
+  // const backLinkLocationRef = useRef(location.state?.from ?? '/');
+  // // console.log('location', location);
+
   // завантаження даних з сервера і встановдення стейтів
   useEffect(() => {
     setShowLoader(true);

@@ -8,6 +8,7 @@ import { useLocation } from 'react-router-dom';
 
 const ListOfMoviesItem = ({ movie }) => {
   const location = useLocation();
+  // console.log('location', location);
 
   let posterPath = NoPosterImage;
   if (movie.poster_path) {
@@ -26,13 +27,12 @@ const ListOfMoviesItem = ({ movie }) => {
       {/* якщо назва фільму в параметрі film.title */}
       {movie.title && (
         <StyledNavLink to={`/movies/${movie.id}`} state={{ from: location }}>
-          {' '}
           <span>{movie.title}</span>
         </StyledNavLink>
       )}
       {/* якщо назва фільму в параметрі film.name */}
       {movie.name && (
-        <StyledNavLink to={`/movies/${movie.id}`}>
+        <StyledNavLink to={`/movies/${movie.id}`} state={{ from: location }}>
           <span>{movie.name}</span>
         </StyledNavLink>
       )}

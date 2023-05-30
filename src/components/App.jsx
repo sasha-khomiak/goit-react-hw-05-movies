@@ -1,16 +1,26 @@
+import React, { lazy } from 'react';
 // підключення бібліотеки маршрутизації рутів
 import { Routes, Route } from 'react-router-dom';
 
 // підключення базового компонента в якому верстаємо застосунок
 import SharedLayout from './SharedLayout/SharedLayout';
 
-// підключення сторінок-компонентів
-import Home from '../pages/Home';
-import Movies from 'pages/Movies';
-import MovieDetails from 'pages/MovieDetails';
-import Cast from './Cast/Cast';
-import Reviews from './Reviews/Reviews';
-import PageNotFound from '../PageNotFound/PageNotFound';
+// import Home from '../pages/Home';
+// import Movies from 'pages/Movies';
+// import MovieDetails from 'pages/MovieDetails';
+// import Cast from './Cast/Cast';
+// import Reviews from './Reviews/Reviews';
+// import PageNotFound from './PageNotFound/PageNotFound';
+
+// підключення сторінок-компонентів з лейзі
+const Home = lazy(() => import('../pages/Home'));
+const Movies = lazy(() => import('../pages/Movies'));
+const MovieDetails = lazy(() => import('../pages/MovieDetails'));
+const Cast = lazy(() => import('../components/Cast/Cast'));
+const Reviews = lazy(() => import('../components/Reviews/Reviews'));
+const PageNotFound = lazy(() =>
+  import('../components/PageNotFound/PageNotFound')
+);
 
 // головний компонент з посторінковою маршрутизацією
 // всі рути прописуємо всережині компонента Routes
