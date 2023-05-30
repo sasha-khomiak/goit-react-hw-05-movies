@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+// стилізовані NavLink робимо тут і передаємо далі в основний компонент
 import { NavLink } from 'react-router-dom';
 
 export const Img = styled.img`

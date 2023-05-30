@@ -1,7 +1,11 @@
+// підключаємо Link, щоб огорнути наш логотип
 import { Link } from 'react-router-dom';
+
+// підключаємо картинку нашого логотипа
 import Logo from '../../images/logo.png';
 
-//стилі секції <header>
+//стиліховані компоненти секції <header>
+// ньюанс в HeaderContainer - його підключаємо в стилізованих компонентах і потім імпортуємо сюди
 import {
   StyledHeader,
   HeaderContainer,
@@ -10,10 +14,8 @@ import {
   StyledNavLink,
 } from './Header.styled';
 
-// import { Container } from 'components/App.styled';
-
-//стилі  контейнера
-
+// наш стилізований хедер
+// блок секція-контейнер, а всередині доготип і навігація
 const Header = () => {
   return (
     <StyledHeader>

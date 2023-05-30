@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+// Контейнер і лінки стилізуємо тут і потім підключимо в основному компоненті
 import { Container } from 'components/App.styled';
 import { NavLink } from 'react-router-dom';
 
@@ -25,6 +26,7 @@ export const LogoImg = styled.img`
   width: 150px;
   animation: wiggle 3s linear infinite;
 
+  // кі фрейм для руху нашого логотипа
   @keyframes wiggle {
     0%,
     7% {
@@ -87,6 +89,7 @@ export const StyledNavLink = styled(NavLink)`
       1px 4px 6px rgba(0, 0, 0, 0.16);
   }
 
+  // активна поточна сторінка буде позначатися жирним текстом
   &.active {
     font-weight: 900;
   }

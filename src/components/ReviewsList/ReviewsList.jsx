@@ -1,8 +1,10 @@
-import React from 'react';
-// import PropTypes from 'prop-types'
+// бібліотека перевірки проптайпів
+import PropTypes from 'prop-types';
 
+// стилізовані компоненти
 import { Ul, Li, Reviever } from './ReviewsList.styled';
 
+// компонент верстки оглядів
 const ReviewsList = ({ reviewes }) => {
   //   console.log('reviewes', reviewes);
   return (
@@ -20,6 +22,8 @@ const ReviewsList = ({ reviewes }) => {
   );
 };
 
-// ReviewsList.propTypes = {}
+ReviewsList.propTypes = {
+  reviewes: PropTypes.array.isRequired,
+};
 
 export default ReviewsList;

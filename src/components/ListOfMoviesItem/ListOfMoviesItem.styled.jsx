@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+// саме сюди імпортуємо NavLink, який потім стилізуємо
 import { NavLink } from 'react-router-dom';
 
 export const Li = styled.li`

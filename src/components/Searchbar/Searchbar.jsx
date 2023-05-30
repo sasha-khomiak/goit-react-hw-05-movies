@@ -1,11 +1,16 @@
-// import React from 'react'
-// import PropTypes from 'prop-types'
+// бібліотека перевірки пропсів
+import PropTypes from 'prop-types';
+
+// бібліотека для стейтів на хуках для контрольованого інпута
 import { useState } from 'react';
 
+//  стиліщовані компоненти
 import { Form, SearchBtn, BtnIcon, Input } from './Searchbar.styled';
 
+// імпорт свг картинки лупи для кнопки пошуку
 import SearchImg from '../../images/search-loop.svg';
 
+// компонент сьорчбар
 const Searchbar = ({ onSubmit }) => {
   // стейт для контролю інпута
   const [query, setQuery] = useState('');
@@ -27,6 +32,8 @@ const Searchbar = ({ onSubmit }) => {
     setQuery('');
   };
 
+  // верстка форми
+  // окрема цікавісь до компонента BtnIcon він стилізований і особливо працює з свг (див стиліщовний файл)
   return (
     <Form onSubmit={onSubmitForm}>
       <SearchBtn type="submit">
@@ -46,6 +53,9 @@ const Searchbar = ({ onSubmit }) => {
   );
 };
 
-// SearchForm.propTypes = {}
+// перевірка пропсів
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default Searchbar;

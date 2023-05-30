@@ -1,8 +1,10 @@
-import React from 'react';
-// import PropTypes from 'prop-types';
+// бібліотека перевірки проп тайпів
+import PropTypes from 'prop-types';
 
+// фото, якщо з бекенда не прийшла фотка актора
 import noActorPhoto from '../../images/noActorPhoto.jpg';
 
+// стилізовані компоненти
 import {
   ActorCard,
   PhotoCardWrap,
@@ -13,12 +15,15 @@ import {
   NameText,
 } from './CastListItem.styled';
 
+// Компонент CastListItem
 const CastListItem = ({ actor }) => {
+  //створюєм дінк на фото, якщо з бекенда прийде фотка, то перезаписуємо на нову
   let actorPhoto = noActorPhoto;
   if (actor.profile_path) {
     actorPhoto = `https://image.tmdb.org/t/p/w500${actor.profile_path}`;
   }
 
+  // оформлення картки актора
   return (
     <ActorCard>
       <PhotoCardWrap>
@@ -35,6 +40,9 @@ const CastListItem = ({ actor }) => {
   );
 };
 
-// CastListItem.propTypes = {};
+// перевірка проп тайпів
+CastListItem.propTypes = {
+  actor: PropTypes.object.isRequired,
+};
 
 export default CastListItem;

@@ -1,11 +1,14 @@
-// import React from 'react';
-// import PropTypes from 'prop-types'
-// import { NavLink } from 'react-router-dom';
+// імпорт бібліотеки PropTypes
+import PropTypes from 'prop-types';
 
-import { Ul } from './ListOfMovies.styled';
-
+// підключаємо компонент одного конкретного фільма для мапання
 import ListOfMoviesItem from '../ListOfMoviesItem/ListOfMoviesItem';
 
+// стилізований компонент (прибираємо ліст стайл і паддінги)
+import { Ul } from './ListOfMovies.styled';
+
+// в компоненті із отриманого масива фільмів мапаємо(перебираємо) і
+//  верстаємо компонент одного фільма
 const ListOfMovies = ({ trendingMovies }) => {
   return (
     <Ul>
@@ -16,6 +19,9 @@ const ListOfMovies = ({ trendingMovies }) => {
   );
 };
 
-// ListOfFilms.propTypes = {}
+// перевірка пропТайпів
+ListOfMovies.propTypes = {
+  trendingMovies: PropTypes.array.isRequired,
+};
 
 export default ListOfMovies;

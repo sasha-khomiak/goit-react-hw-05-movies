@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
+// пілключаємо контейнер тут, стилізуємо і передаємо в наш основний компонент
 import { Container } from 'components/App.styled';
-// import { NavLink } from 'react-router-dom';
 
 export const StyledFooter = styled.footer`
   background-color: #ff6b17;

@@ -1,3 +1,5 @@
+// підключення стилізованих компонентів футера
+// цікавить FooterContainer - Container підключаємо в файл стилізації і після цього - сюди
 import {
   StyledFooter,
   FooterContainer,
@@ -5,6 +7,7 @@ import {
   FooterTextLink,
 } from './Footer.styled';
 
+// компонент футера стилізованиі секція-контейнер і всередині вміст футера
 const Footer = () => {
   return (
     <StyledFooter>

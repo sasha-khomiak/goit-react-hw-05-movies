@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+// иуи підключаємо NavLink і стилізовані відаємо в головний файл компонента
 import { NavLink } from 'react-router-dom';
 
 export const MovieCardWrap = styled.div`

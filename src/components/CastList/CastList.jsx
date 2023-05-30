@@ -1,12 +1,15 @@
-import React from 'react';
-// import PropTypes from 'prop-types'
+// бібліотека перевірки проп тайпів
+import PropTypes from 'prop-types';
 
+// стиліщовані компоненти
 import { Ul } from './CastList.styled';
 
+// компонент для верстки одного актора
 import CastListItem from '../CastListItem/CastListItem';
 
+// компонент CastList
+// у ньому мапаємо масив акторів і передаємо в компонент відображення одного актора
 const CastList = ({ cast }) => {
-  // console.log('cast', cast);
   return (
     <Ul>
       {cast.map(actor => (
@@ -16,6 +19,9 @@ const CastList = ({ cast }) => {
   );
 };
 
-// CastList.propTypes = {}
+// перевірка проптипів
+CastList.propTypes = {
+  cast: PropTypes.array.isRequired,
+};
 
 export default CastList;

@@ -17,14 +17,4 @@ export const Ul = styled.ul`
     flex-wrap: wrap;
     gap: 10px;
   }
-
-  /*----Стиль для планшета 768-1200----*/
-
-  @media screen and (min-width: 768px) {
-  }
-
-  /*----Стиль для компа від 1200----*/
-
-  @media screen and (min-width: 1200px) {
-  }
 `;

@@ -1,14 +1,17 @@
+// підключення спінера лоадера
 import { CirclesWithBar } from 'react-loader-spinner';
 
 // підключаємо ф-ію роботи з порталами в реакт домі
 import { createPortal } from 'react-dom';
 
-// стидізація лоадера
+// стилізація контейнера лоадера
 import { LoaderContainer } from './Loader.styled';
 
 //створюємо новий елемент який буде порталом для модадки
 const loaderRoot = document.querySelector('#loader-root');
 
+// в createPortal передаємо нащ доадер в контейнері
+//  доугим параметром передаємо імʼя елемента, який буде порталом
 const Loader = () => {
   return createPortal(
     <LoaderContainer>

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+// svg в реакт можна підключити через цю бібліотеку
 //npm install react-svg
 import { ReactSVG } from 'react-svg';
 

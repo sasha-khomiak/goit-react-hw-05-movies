@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 
+// стиль контейнера створив в Арр, тому що він імпортується у всі сторінки
+
 export const Container = styled.div`
   /*----Базовий стиль для мобілки до 479 (респонсивний)----*/
+  /* outline: 2px solid tomato; */
   width: 100%;
   max-width: 479px;
-  /* outline: 2px solid tomato; */
   padding: 0 15px;
   margin: 0 auto;
   display: flex;
