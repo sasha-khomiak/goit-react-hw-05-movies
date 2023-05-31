@@ -1,9 +1,10 @@
-// імпортуємо useState
+// імпортуємо useState, useEffect
 import { useState, useEffect } from 'react';
 
+// імпорт бібліотеки отримання динамічних даних з адресного рядка після ?
 import { useSearchParams } from 'react-router-dom';
 
-// підключення бібліотеки повідомлень
+// підключення бібліотеки повідомлень toastify
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -17,38 +18,41 @@ import ListOfMovies from 'components/ListOfMovies/ListOfMovies';
 import Loader from 'components/Loader/Loader';
 import LoadMoreButton from '../components/LoadMoreButton/LoadMoreButton';
 
-// підключення стилізованих компонентів
+// підключення стилізованих компонентів контейнера для відсікання ширини
 import { Container } from '../components/App.styled';
 
+// картинка, якщо в результатах не буде постера
 import SearchingImage from '../images/searching.gif';
 
 // наш головний компонент
 const Movies = () => {
   //наш стейт
   // moviesArray - масив для рендерингу
-  // query - пошуковий запит після сабміту
-  // showModal - чи показуємо модалку
   // page - номер сторінки, за замовчанням 1
   // showBtnLoadMore - чи показувати кнопку завантажити ще
-  // isLoading - чи показувати лоадер
+  // showLoader - чи показувати лоадер
   const [moviesArray, setMoviesArray] = useState([]);
-  // const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
   const [showBtnLoadMore, setShowBtnLoadMore] = useState(false);
   const [showLoader, setShowLoader] = useState(false);
 
+  // query - пошуковий запит отриманий з адресного рядка після знаку ?
+  // якщо такого параметра в адресному рядку немає то йому присвоюється null
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query');
 
   // перша верстка використовуючи запис з адресного рядка
   useEffect(() => {
-    // якщо параметрів немає, то просто виходимо
+    // якщо параметрів в алресному рядку (query) немає, то просто виходимо
     if (!query) {
       return;
     }
 
+    // якщо query існує: вмикаємо лоадер, робимо запит по query на api і першій сторінці
+    // отриманий масив об'єктів фільмів записуємо в moviesArray
+    // якщо загальна кількість результатів на api більше від 20, то показуємо кнопку load more
+    // по заверщенню вимикаємо лоадер
     setShowLoader(true);
-
     getMoviesByNameAndPage(query, 1)
       .then(data => {
         setMoviesArray([...data.results]);
@@ -88,13 +92,12 @@ const Movies = () => {
   };
 
   // функція, яка за запитом і сторінкою отримує дані про фільми і
-  // записуємо в стейт, ловимо помилки(?), на початку показуємо, а на фінал знімаємо лоадер
+  // записуємо в стейт, на початку показуємо, а на фінал знімаємо лоадер
   const getFromAPI = (toFind, page) => {
     setShowLoader(true);
     //запит на сервер
     getMoviesByNameAndPage(toFind, page)
       .then(data => {
-        // console.log('data', data);
         // якщо немає жодного збігу, то виводимо про це повідомлення
         // і скидаємо стейт до початкового стану (query, page, showBtnLoadMore), щоб не засмічувався
         if (data.total_results < 1) {
@@ -143,16 +146,14 @@ const Movies = () => {
           }
         }
       })
-      // .catch(e => {
-      // setError(e.message);
-      // toast.error(e.message);
-      // console.log('error', error);
-      // })
       .finally(() => {
         setShowLoader(false);
       });
   };
 
+  // верстка нашого компонента: показуємо лоадер, контейнер повідомлень
+  // все поміщаємо і секція - контейнер
+  // заголовок контейнера, форма пошуку, картинка коли нема результатів, блок результатів
   return (
     <>
       {showLoader && <Loader />}

@@ -1,52 +1,48 @@
-// підключення React і хуків
-import React from 'react';
+// підключення  і хуків useState, useEffect
 import { useState, useEffect } from 'react';
 
 // підключення useParams для отримання параметрів з адресного рядка
+// підключення Outlet в який поміститься вміст кастс і ревью. див маршрутизацію вкладеності в Арр
 import { useParams, Outlet } from 'react-router-dom';
 
 // підключення функції отримання даних про фільм із api
 import { getMovieById } from '../utils/api';
 
-// підключення бібліотеки повідомлень
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
-
 // підключення компонентів
 import Loader from '../components/Loader/Loader';
 import MovieCard from '../components/MovieCard/MovieCard';
 
+// підключення стилізованоно контейнера для відсікання щирини
 import { Container } from 'components/App.styled';
 
+// компонент сторінки MovieDetails
 const MovieDetails = () => {
+  // отримуємо movieId із адресного рядка
   const { movieId } = useParams();
+
+  // масив у якому зберігатимемо  обʼєкт з описом фільма
   const [movieInfo, setMovieInfo] = useState(null);
-  // const [error, setError] = useState(null);
+
+  // стан показування лоадера
   const [showLoader, setShowLoader] = useState(false);
 
-  // const location = useLocation();
-  // const backLinkLocationRef = useRef(location.state?.from ?? '/');
-  // // console.log('location', location);
-
-  // завантаження даних з сервера і встановдення стейтів
+  // завантаження даних з сервера і встановлення стейтів
   useEffect(() => {
     setShowLoader(true);
     getMovieById(movieId)
       .then(data => {
         setMovieInfo(data);
       })
-      .catch(e => {
-        // setError(e.message);
-      })
       .finally(() => {
         setShowLoader(false);
       });
   }, [movieId]);
 
+  // рендеринг картки фільма: блок лоадера, секція з контейнером,
+  // всередині картка про фільм і Outlet в якому будуть ревью і касти
   return (
     <>
       {showLoader && <Loader />}
-      {/* <ToastContainer /> */}
 
       <section>
         <Container>
